@@ -1,24 +1,36 @@
 /************************************************************** Task 1: Warm-up! **************************************************************/
 //Task a: declare a variable called votingAge, console log true if age > 18 (no function required)
 
-
-
+const votingAge = 18;
+if (23 >= votingAge) {
+    console.log(true);
+}
 
 
 //Task b: declare a variable and then use a conditional to change the value of that variable based on the value assigned to a second variable (no function required)
 
+let num = 1;
+
+const x = 0;
+
+if (num > x) {
+    num += 2;
+}
 
 
 
 
 //Task c: Convert string ("1999") to integer (1999)  (no function required) // hint look up the Number method
 
+const string = "1999";
 
+Number(string);
 
 
 
 //Task d: Write a function to multiply a*b 
 
+const multiply = (a,b) => (a*b);
 
 
 
@@ -27,7 +39,7 @@
 //Age in Dog years
 //write a function that takes your age and returns it to you in dog years - they say that 1 human year is equal to seven dog years 
 
-
+const humanToDog = (a) => (a * 7);
 
 
 
@@ -48,7 +60,30 @@
 // 7 - 12 months 4% of their body weight
 
 // when you are finished invoke your function with the weight of 15 lbs and the age of 1 year - if your calculations are correct your result should be 0.44999999999999996
-  
+ 
+const dogFoodCal = (weight,age) => {
+     if(age >= 1) {
+         if (weight <= 5) {
+             return weight * 0.05;
+         } else if (weight <= 10) {
+            return weight * 0.04;
+         } else if (weight <= 15) {
+            return weight * 0.03;
+         } else {
+            return weight * 0.02;
+         }
+     } else if(age > 1) {
+        if (age >= .04) {
+            return weight * 0.10;
+        } else if (weight <= 0.07) {
+           return weight * 0.05;
+        }  else {
+           return weight * 0.04;
+        }
+    }
+};
+
+dogFoodCal(15,1);
 
 
 
@@ -60,6 +95,44 @@
 // use math.random to determine the computers choice 
 // hint while you can complete this with only conditionals based on strings it may help to equate choice to a number 
 
+const rpsArr = ['rock', 'paper', 'scissor'];
+
+const num = Math.floor(Math.random() * 2);
+
+const player = prompt("Do you choose rock, paper or scissors?");
+
+function RpsGame(player, comp) {
+    if(player === comp) {
+        return "The result is a tie!";
+    }
+    if(player === "rock") {
+        if(comp === "scissors") {
+            return "rock wins";
+        } else {
+            return "paper wins";
+        }
+    }
+    if(player === "paper") {
+        if(comp === "rock") {
+            return "paper wins";
+        } else {
+            if(comp === "scissors") {
+                return "scissors wins";
+        }
+    }
+    if(player === "scissors") {
+        if(comp === "rock") {
+            return "rock wins";
+        } else {
+            if(comp === "paper") {
+                return "scissors wins";
+            }
+        }
+    }
+    }
+}
+
+RpsGame(player,rpsArr[num]);
   
   
 
@@ -67,13 +140,14 @@
 //Metric Converter
 //a. KM to Miles - should take the number of kilometers and convert it to the equal number of miles
 
+const metricCont = (km) => (km * .621271);
 
 
 
 
 //b. Feet to CM - should take the number of feet and convert it to the equal number of centimeters
   
-
+const convertToCm = (feet) => (feet * 30.48);
 
 
 
@@ -81,7 +155,12 @@
 // 99 bottles of soda on the wall
 // create a function called annoyingSong
 // the function should take a starting number as an argument and count down - at each iteration it should log (number) bottles of soda on the wall, (number) bottles of soda, take one down pass it around (number left over) bottles of soda on the wall`
-  
+
+const countBackwards = (num) => {
+    for (let i = num; i >= 0; i--) {
+        console.log(`${i} bottles of soda on the wall, ${i} bottles of soda, take one down pass it around (${i} left over) bottles of soda on the wall`);
+    }
+}
 
 
 
@@ -95,8 +174,19 @@
 //60s should be D 
 //and anything below 60 should be F
   
-
-  
+const gradeCalculator = (num) => {
+    if (num >= 90) {
+        return 'A';
+    } else if (num >= 80) {
+        return 'B';
+    } else if (num >= 70) {
+        return 'C';
+    } else if (num >= 60) {
+        return 'D';
+    } else {
+        return 'F'
+    }
+} 
   
 
 /************************************************************** Stretch **************************************************************/
@@ -105,6 +195,26 @@
 // try looking up the .includes() method
 
 
+function counter (str) {
+    let counter = 0;
+    const arr = str.split('')
+    console.log(arr);
+    arr.forEach(element => {
+        if (element.includes('a')) {
+            counter += 1;
+        } else if (element.includes('e')) {
+            counter += 1;
+        } else if (element.includes('i')) {
+            counter += 1;
+        } else if (element.includes('o')) {
+            counter += 1;
+        } else if (element.includes('u')) {
+            counter += 1;
+        } 
+    });
+    return counter;
+}
+
 
 
 
@@ -112,7 +222,44 @@
 //Take Rock, Paper, Sissors further
 //update your rock papers sissors code below to take a prompt from a user using the window object
 
+const rpsArr = ['rock', 'paper', 'scissor'];
 
+const num = Math.floor(Math.random() * 2);
+
+const player = prompt("Do you choose rock, paper or scissors?");
+
+function RpsGame(player, comp) {
+    if(player === comp) {
+        return "The result is a tie!";
+    }
+    if(player === "rock") {
+        if(comp === "scissors") {
+            return "rock wins";
+        } else {
+            return "paper wins";
+        }
+    }
+    if(player === "paper") {
+        if(comp === "rock") {
+            return "paper wins";
+        } else {
+            if(comp === "scissors") {
+                return "scissors wins";
+        }
+    }
+    if(player === "scissors") {
+        if(comp === "rock") {
+            return "rock wins";
+        } else {
+            if(comp === "paper") {
+                return "scissors wins";
+            }
+        }
+    }
+    }
+}
+
+RpsGame(player,rpsArr[num]);
 
 
 
